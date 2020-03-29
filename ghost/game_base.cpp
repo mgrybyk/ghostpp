@@ -1447,11 +1447,10 @@ void CBaseGame :: SendWelcomeMessage( CGamePlayer *player )
 			SendChat( player, " " );
 
 		SendChat( player, " " );
-		SendChat( player, " " );
-		SendChat( player, " " );
-		SendChat( player, "GHost++                                         http://www.codelain.com/" );
+		SendChat( player, "Hosted by GHost++ bot" );
 		SendChat( player, "-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-" );
-		SendChat( player, "     Game Name:                 " + m_GameName );
+		SendChat( player, "Game Name: " + m_GameName );
+		SendChat( player, " " );
 
 		if( !m_HCLCommandString.empty( ) )
 			SendChat( player, "     HCL Command String:  " + m_HCLCommandString );

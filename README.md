@@ -1,31 +1,31 @@
 GHost++
 =======
 
-GHost++ is a Warcraft III game hosting bot. As the original project on Google Code is no longer available, https://github.com/uakfdotb/ghostpp contains the most "official" version of GHost++.
+> 1.26 only, no mysql required
 
-* Github: https://github.com/uakfdotb/ghostpp
-* Website: https://www.ghostpp.com/
+for latest warcraft version see https://github.com/uakfdotb/ghostpp
 
 GHost++ is no longer actively maintained. Nevertheless, GHost++ remains widely used for hosting Warcraft III games, and there are no major known bugs.
-
-If you are looking for a simple bot to host games from a server, consider [Aura](https://github.com/Josko/aura-bot/), an actively maintained fork of GHost++ with a greatly modernized core but with many features stripped out.
 
 Compilation
 -----------
 
-GHost++ depends on libboost, libgmp, zlib, libbz2, and libmysqlclient. These steps should suffice to compile GHost++ on Ubuntu 16.04:
+GHost++ depends on libboost, libgmp, zlib, libbz2. These steps should suffice to compile GHost++ on Ubuntu 16.04:
 
-	sudo apt-get install -y git libboost-all-dev build-essential libgmp-dev zlib1g-dev libbz2-dev libmysql++-dev
-	git clone https://github.com/uakfdotb/ghostpp
+	apt-get install -y git libboost-all-dev build-essential libgmp-dev zlib1g-dev libbz2-dev
+	git clone https://github.com/mgrybyk/ghostpp
 	cd ghostpp
 	cd bncsutil/src/bncsutil/
-	make && sudo make install
+	make && make install
 	cd ../../../StormLib/stormlib/
-	make && sudo make install
+	make && make install
 	cd ../../ghost
 	make
 
-See MANUAL or [the ghostpp.com wiki](https://www.ghostpp.com/wiki/index.php?title=Main_Page) for more in-depth but possibly outdated guides on other platforms.
+Warcraft files
+--------------
+
+Copy your `game.dll`, `Maps`, `Storm.dll`, `war3.exe`, `War3Patch.mpq` to `war3` folder (`bot_war3path`)
 
 Configuration
 -------------
@@ -39,8 +39,3 @@ Once configured, start GHost++:
 You can pass a command-line argument to use a different secondary configuration filename, instead of `ghost.cfg`:
 
 	./ghost++ /opt/myconfig.cfg
-
-Usage
------
-
-See MANUAL or [the ghostpp.com wiki](https://www.ghostpp.com/wiki/index.php?title=Main_Page) for instructions on using GHost++.
