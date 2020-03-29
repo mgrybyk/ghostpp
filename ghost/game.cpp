@@ -376,7 +376,7 @@ bool CGame :: EventPlayerBotCommand( CGamePlayer *player, string command, string
 		}
 	}
 
-	if( player->GetSpoofed( ) && ( AdminCheck || RootAdminCheck || IsOwner( User ) ) )
+	if( AdminCheck || RootAdminCheck || IsOwner( User ) )
 	{
 		CONSOLE_Print( "[GAME: " + m_GameName + "] admin [" + User + "] sent command [" + Command + "] with payload [" + Payload + "]" );
 
