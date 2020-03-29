@@ -5,3 +5,5 @@ ghost.cfg
 ghost/ghost++
 ghost.log
 ghost.dbs
+
+.DS_Store
