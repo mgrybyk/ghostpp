@@ -346,7 +346,6 @@ bool CGame :: EventPlayerAction( CGamePlayer *player, CIncomingAction *action )
 
 bool CGame :: EventPlayerBotCommand( CGamePlayer *player, string command, string payload )
 {
-	CONSOLE_Print( "here" );
 	bool HideCommand = CBaseGame :: EventPlayerBotCommand( player, command, payload );
 
 	// todotodo: don't be lazy
@@ -377,14 +376,11 @@ bool CGame :: EventPlayerBotCommand( CGamePlayer *player, string command, string
 		}
 	}
 
-	CONSOLE_Print( "x: " + player->GetSpoofed( ) + " y: " + ( AdminCheck || RootAdminCheck || IsOwner( User ) ) + " z: " + ( !m_Locked || RootAdminCheck || IsOwner( User ) ) + "e" );
-	CONSOLE_Print( "[GAME: " + m_GameName + "] admin [" + User + "] sent command [" + Command + "] with payload [" + Payload + "]" );
-// player->GetSpoofed( ) && ( AdminCheck || RootAdminCheck || IsOwner( User ) )
-	if( true )
+	if( player->GetSpoofed( ) && ( AdminCheck || RootAdminCheck || IsOwner( User ) ) )
 	{
 		CONSOLE_Print( "[GAME: " + m_GameName + "] admin [" + User + "] sent command [" + Command + "] with payload [" + Payload + "]" );
-// !m_Locked || RootAdminCheck || IsOwner( User )
-		if( true )
+
+		if( !m_Locked || RootAdminCheck || IsOwner( User ) )
 		{
 			/*****************
 			* ADMIN COMMANDS *
