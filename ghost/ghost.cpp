@@ -28,7 +28,6 @@
 #include "socket.h"
 #include "ghostdb.h"
 #include "ghostdbsqlite.h"
-#include "ghostdbmysql.h"
 #include "bnet.h"
 #include "map.h"
 #include "packed.h"
@@ -63,7 +62,6 @@
 #include "commandpacket.h"
 #include "ghostdb.h"
 #include "ghostdbsqlite.h"
-#include "ghostdbmysql.h"
 #include "bncsutilinterface.h"
 #include "warden.h"
 #include "bnlsprotocol.h"
@@ -411,12 +409,8 @@ CGHost :: CGHost( CConfig *CFG )
 
 	if( DBType == "mysql" )
 	{
-#ifdef GHOST_MYSQL
-		m_DB = new CGHostDBMySQL( CFG );
-#else
-		CONSOLE_Print( "[GHOST] warning - this binary was not compiled with MySQL database support, using SQLite database instead" );
+		CONSOLE_Print( "[GHOST] - this binary was not compiled with MySQL database support, using SQLite database instead" );
 		m_DB = new CGHostDBSQLite( CFG );
-#endif
 	}
 	else
 		m_DB = new CGHostDBSQLite( CFG );
@@ -688,11 +682,7 @@ CGHost :: CGHost( CConfig *CFG )
 	if( m_BNETs.empty( ) && !m_AdminGame )
 		CONSOLE_Print( "[GHOST] warning - no battle.net connections found and no admin game created" );
 
-#ifdef GHOST_MYSQL
-	CONSOLE_Print( "[GHOST] GHost++ Version " + m_Version + " (with MySQL support)" );
-#else
 	CONSOLE_Print( "[GHOST] GHost++ Version " + m_Version + " (without MySQL support)" );
-#endif
 }
 
 CGHost :: ~CGHost( )
